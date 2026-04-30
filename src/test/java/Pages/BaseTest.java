@@ -26,29 +26,29 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-//    @AfterMethod
-//    public void tearDown() {
-//        if (driver != null) {
-//            driver.quit();
-//        }
-//    }
-
-    public void destroyAnnoyingAds() {
-        try {
-            // 1. The "Vignette" URL Hack
-            // Sometimes the ad changes the URL. This forcefully removes the ad from the URL.
-            String currentUrl = driver.getCurrentUrl();
-            if (currentUrl.contains("#google_vignette")) {
-                driver.get(currentUrl.replace("#google_vignette", ""));
-            }
-
-            // 2. The Iframe Annihilator
-            // This tells the browser: "Find every iframe on the screen and delete it."
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("document.querySelectorAll('iframe').forEach(iframe => iframe.remove());");
-
-        } catch (Exception e) {
-            System.out.println("No ads found to destroy!");
+    @AfterMethod
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
         }
     }
+
+//    public void destroyAnnoyingAds() {
+//        try {
+//            // 1. The "Vignette" URL Hack
+//            // Sometimes the ad changes the URL. This forcefully removes the ad from the URL.
+//            String currentUrl = driver.getCurrentUrl();
+//            if (currentUrl.contains("#google_vignette")) {
+//                driver.get(currentUrl.replace("#google_vignette", ""));
+//            }
+//
+//            // 2. The Iframe Annihilator
+//            // This tells the browser: "Find every iframe on the screen and delete it."
+//            JavascriptExecutor js = (JavascriptExecutor) driver;
+//            js.executeScript("document.querySelectorAll('iframe').forEach(iframe => iframe.remove());");
+//
+//        } catch (Exception e) {
+//            System.out.println("No ads found to destroy!");
+//        }
+//    }
 }
