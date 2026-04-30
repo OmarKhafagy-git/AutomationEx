@@ -26,7 +26,7 @@ public class ProductsTest extends BaseTest {
 
       currentUrl = driver.getCurrentUrl();
       Assert.assertEquals(currentUrl,"https://automationexercise.com/product_details/1","Error: Did not reach the Product Details page!");
-
+      pd = new ProductsDetails(driver);
       SoftAssert softAssert = new SoftAssert();
       softAssert.assertTrue(pd.isProductDetailsDisplayed(),"Error: Product Details is not displayed!");
 
