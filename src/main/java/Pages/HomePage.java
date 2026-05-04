@@ -40,8 +40,20 @@ public class HomePage {
     By Continue = By.xpath("//*[@id=\"cartModal\"]/div/div/div[3]/button");
     By allAddButtons = By.xpath("//div[@class='productinfo text-center']//a[contains(@class, 'add-to-cart')]");
     By Category = By.xpath("/html/body/section[2]/div/div/div[1]/div/h2");
+    By RecommendedItems = By.xpath("/html/body/section[2]/div/div/div[2]/div[2]/h2");
+    By ViewCart = By.xpath("//*[@id=\"cartModal\"]/div/div/div[2]/p[2]/a/u");
 
 
+    public String getRecommendedTxt(){
+        return driver.findElement(RecommendedItems).getText();
+    }
+
+    public void SelectRecommendedItemByIndex(int index) {
+        int rowNum = index + 1;
+        String DynamicPath = String.format("//*[@id=\"recommended-item-carousel\"]/div/div[1]/div[%d]/div/div/div/a", rowNum);
+        driver.findElement(By.xpath(DynamicPath)).click();
+        driver.findElement(ViewCart).click();
+    }
 
     public void selectCategory(int index){
         int rowNumber = 1 + index;
@@ -96,6 +108,11 @@ public class HomePage {
 
     public String getSubTxt() {
         return driver.findElement(SubTxt).getText();
+    }
+
+    public void ScrollToRecommendedProduct() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(RecommendedItems));
     }
 
     public void ScrollToFooter() {

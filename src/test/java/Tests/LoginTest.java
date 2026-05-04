@@ -22,9 +22,9 @@ public class LoginTest extends BaseTest {
         H = new HomePage(driver);
         H.clickSignUpBtn1();
         S = new SignUpPage(driver);
-        S.loginToAcc("mero_kh2011@yahoo.com","123123");
+        S.loginToAcc("omar.2@g2ail.com","123456");
         String ActualHeader = H.getLoggedInAs();
-        Assert.assertEquals("Logged in as "+ActualHeader, "Logged in as omar","Error");
+        Assert.assertEquals("Logged in as "+ActualHeader, "Logged in as Omar","Error");
 
     }
 

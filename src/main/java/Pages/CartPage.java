@@ -17,13 +17,18 @@ public class CartPage {
     By Footer = By.xpath("//*[@id=\"footer\"]/div[2]");
     By SubEmail = By.xpath("//*[@id=\"susbscribe_email\"]");
     By SubBtn = By.xpath("//*[@id=\"subscribe\"]");
-    By SubSucces = By.xpath("//*[@id=\"success-subscribe\"]");
+    By SubSuccess = By.xpath("//*[@id=\"success-subscribe\"]");
     By SubTxt = By.xpath("//*[@id=\"footer\"]/div[1]/div/div/div[2]/div/h2");
     By Quantity = By.xpath("//*[@id=\"product-1\"]/td[4]/button");
     By CheckOut = By.xpath("//*[@id=\"do_action\"]/div[1]/div/div/a");
     By Reg_log = By.xpath("//*[@id=\"checkoutModal\"]/div/div/div[2]/p[2]/a/u");
     By RemoveProduct = By.xpath("//*[@id=\"product-1\"]/td[6]/a/i");
     By CartEmpty = By.xpath("//*[@id=\"cart_info\"]");
+    By ProductInfo = By.xpath("//*[@id=\"cart_info_table\"]");
+
+    public boolean isProductVisible() {
+        return driver.findElement(ProductInfo).isDisplayed();
+    }
 
 
 
@@ -82,8 +87,8 @@ public class CartPage {
         driver.findElement(SubEmail).sendKeys(email);
         driver.findElement(SubBtn).click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(SubSucces)));
-        return driver.findElement(SubSucces).getText();
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(SubSuccess)));
+        return driver.findElement(SubSuccess).getText();
     }
 
 

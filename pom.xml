@@ -8,7 +8,7 @@
   <packaging>jar</packaging>
 
   <name>AutomationEx</name>
-  <url>http://maven.apache.org</url>
+  <url>https://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -45,6 +45,25 @@
         <version>1.9.20.1</version>
       </dependency>
 
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>5.4.0</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Security Override: Forcing a safe version of commons-lang3 to fix CVE-2025-48924 -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.20.0</version>
+    </dependency>
+    <!-- Security Override: Forcing a safe version of commons-codec to fix WS-2019-0379 -->
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.17.0</version>
+    </dependency>
 
   </dependencies>
 
@@ -66,6 +85,8 @@
           </systemPropertyVariables>
         </configuration>
       </plugin>
+
+
       <!-- Allure Maven Plugin: Opens the report in your browser -->
       <plugin>
         <groupId>io.qameta.allure</groupId>
